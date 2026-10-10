@@ -1,0 +1,14 @@
+{
+  "name": "dnd-battle-map",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "npm@10.9.2",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "concurrently -n shared,server,web -c yellow,cyan,magenta \"npm run dev -w @dnd/shared\" \"npm run dev -w @dnd/server\" \"npm run dev -w @dnd/web\"",
+    "build": "npm run build -w @dnd/shared && npm run build -w @dnd/server && npm run build -w @dnd/web",
+    "check": "npm run check -w @dnd/shared && npm run check -w @dnd/server && npm run check -w @dnd/web",
+    "db:generate": "npm run prisma:generate -w @dnd/server"
+  },
+  "devDependencies": {"concurrently": "^9.1.2"}
+}
